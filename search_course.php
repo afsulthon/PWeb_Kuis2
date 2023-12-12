@@ -34,7 +34,7 @@ if (isset($_COOKIE['user_id'])) {
          <?php
          if (isset($_POST['search_course']) or isset($_POST['search_course_btn'])) {
             $search_course = $_POST['search_course'];
-            $select_courses = $conn->prepare("SELECT * FROM `content` WHERE title LIKE '%{$search_course}%' AND status = ?");
+            $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE title LIKE '%{$search_course}%' AND status = ?");
             $select_courses->execute(['active']);
             if ($select_courses->rowCount() > 0) {
                while ($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)) {
